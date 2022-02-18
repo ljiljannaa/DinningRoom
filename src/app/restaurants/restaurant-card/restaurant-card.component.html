@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col">
+        <b (click)="open(content)">{{restaurant.name}}</b>
+        <p>{{restaurant.description}}</p>
+        <div class="row">
+            <div class="col">
+                <span>Rating: </span>
+                <img src="../../../assets/images/star-full.png" *ngFor="let a of ratingFull" width="25px">
+                <img src="../../../assets/images/star-empty.png" *ngFor="let a of ratingEmpty" width="25px">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <span>Price: </span>
+                <img src="../../../assets/images/coin-full.png" *ngFor="let a of priceFull" width="25px">
+                <img src="../../../assets/images/coin-empty.png" *ngFor="let a of priceEmpty" width="25px">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{restaurant.name}}</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+          <div class="col-8">
+            <u>Working Hours</u>
+            <ul>
+                <li *ngIf="restaurant!.days![1]">
+                   Monday: {{restaurant!.days![1].opens}} - {{restaurant!.days![1].closes}}
+                </li>
+                <li *ngIf="restaurant!.days![2]">
+                    Tuesday: {{restaurant!.days![2].opens}} - {{restaurant!.days![2].closes}}
+                 </li>
+                 <li *ngIf="restaurant!.days![3]">
+                    Wednesday: {{restaurant!.days![3].opens}} - {{restaurant!.days![3].closes}}
+                 </li>
+                 <li *ngIf="restaurant!.days![4]">
+                    Thursday: {{restaurant!.days![4].opens}} - {{restaurant!.days![4].closes}}
+                 </li>
+                 <li *ngIf="restaurant!.days![5]">
+                    Friday: {{restaurant!.days![5].opens}} - {{restaurant!.days![5].closes}}
+                 </li>
+                 <li *ngIf="restaurant!.days![6]">
+                    Saturday: {{restaurant!.days![6].opens}} - {{restaurant!.days![6].closes}}
+                 </li>
+                 <li *ngIf="restaurant!.days![7]">
+                    Sunday: {{restaurant!.days![7].opens}} - {{restaurant!.days![7].closes}}
+                 </li>
+            </ul>
+
+          </div>
+          <div class="col-4">
+            <u>Address: </u>
+            <ul>
+                <li>{{restaurant.location}}</li>
+            </ul>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of menuList.results[0].items">
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+      </div>
+    </div>
+  </ng-template>
